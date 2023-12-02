@@ -6,7 +6,6 @@ from PIL import Image, ImageTk
 from tkinter import filedialog
 from test import call_predict
 
-
 def main_window():
     # Создание главного окна
     root = tk.Tk()
@@ -40,7 +39,6 @@ def main_window():
     photo_btn.pack(side=BOTTOM, fill=X)
 
     tk.mainloop()
-
 
 def by_photo():
     # Создание окна фото
@@ -84,7 +82,6 @@ def by_photo():
     back_btn.bind('<Button->', back_to_main)  # Событие кнопки назад
 
     photo_window.mainloop()
-
 
 def by_camera():  # Нужно подогнать раземер камеры, не знаю где это делается
     cap = cv.VideoCapture(0)
@@ -130,8 +127,6 @@ def by_camera():  # Нужно подогнать раземер камеры, �
     back_btn.pack(side=BOTTOM, fill=X) # Расположение кнорки
 
     show_frame()
-
-
 
 if __name__ == '__main__':
     main_window()

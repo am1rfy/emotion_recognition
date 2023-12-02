@@ -2,8 +2,6 @@ import cv2 as cv
 import keras
 import tensorflow as tf
 from main import cap_img
-from keras.models import Sequential
-from keras.layers import Dense, Activation
 
 emotions = ['Злой', 'Отвращение', 'В ужасе', 'Счастливый', 'Нейтральный', 'Печальный', 'Удивленный']
 
@@ -25,14 +23,9 @@ def call_predict(img_path):
 
     preds = model.predict([prepare(img)])
 
-    max_happiness = max(preds[0])
+    emotion = max(preds[0])
+    confidence = emotions[preds[0].argmax()]
     
-    if max_happiness == 0:
-        return 'Не удалось распознать'
-    
-    for i in range(len(preds[0])):
-        if preds[0][i] == max_happiness:
-            return emotions[i] + ', с процентом достоверности ' + str(format(max_happiness, '.0%'))
+    return f'Предсказанное эмоциональное состояние: {emotion}, Процент уверенности: {confidence * 100:.2f}%'
 
-# print(call_predict('imgs/1.jpg'))
-
+print(call_predict('imgs/1.jpg'))
