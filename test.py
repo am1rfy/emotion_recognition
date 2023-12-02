@@ -21,11 +21,14 @@ def call_predict(img_path):
 
     model = keras.models.load_model('model/ferNet.h5')
 
-    preds = model.predict([prepare(img)])
+    predictes = model.predict([prepare(img)])
 
-    emotion = max(preds[0])
-    confidence = emotions[preds[0].argmax()]
-    
-    return f'Предсказанное эмоциональное состояние: {emotion}, Процент уверенности: {confidence * 100:.2f}%'
+    max_prediction = max(predictes[0])
 
-print(call_predict('imgs/1.jpg'))
+    for i in range(len(predictes[0])):
+        if predictes[0][i] == max_prediction:
+            predicted_emotion = emotions[i]
+            confidence = max_prediction
+            return predicted_emotion + ', с процентом достоверности ' + str(format(confidence, '.0%'))
+
+# print(call_predict('imgs/1.jpg'))
