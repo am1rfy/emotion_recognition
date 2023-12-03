@@ -9,7 +9,7 @@ from keras import regularizers
 from keras.callbacks import ModelCheckpoint, CSVLogger, TensorBoard, EarlyStopping, ReduceLROnPlateau
 import datetime
 import matplotlib.pyplot as plt
-from keras.utils.vis_utils import plot_model
+from keras.utils import plot_model
 
 train_dir = '/content/drive/MyDrive/input/fer2013/train/'
 test_dir = '/content/drive/MyDrive/input/fer2013/test/'
