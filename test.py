@@ -43,11 +43,7 @@ def get_model(input_size, classes=7):
 
 def call_predict(img_path):
     # Загрузка обученной модели
-    ROW, COL = 48, 48
-    CLASSES = 7
-    model = get_model((ROW, COL, 1), CLASSES)
-    model.summary()
-    model.load_weights('model/ferNet.h5')
+    model = keras.models.load_model('./new_model/model')
     
     # Получение изображения квадрата лица из полного изображения 
     image = cap_img(img_path)

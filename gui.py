@@ -13,12 +13,14 @@ def main_window():
     photo_window.geometry("600x480+650+250")
     photo_window.resizable(False, False)
     photo_window.title('По фото')
-
-    def openfn():  # Загрузка изображения из компа
+    
+    # Загрузка изображения из компа
+    def openfn(): 
         filename = filedialog.askopenfilename(title='open')
         return filename
-
-    def open_img():  # Конвертация изображения для ткинтера
+    
+    # Конвертация изображения для ткинтера
+    def open_img():
         x = openfn()
         output = call_predict(x)
         emotion_text.set(output)
@@ -26,7 +28,7 @@ def main_window():
         img = Image.open(x)
         img = img.resize((450, 280))
         img = ImageTk.PhotoImage(img)
-        panel = Label(photo_window, image=img)  # Сюда вставляется изображение
+        panel = Label(photo_window, image=img)
         panel.image = img
         panel.place(x=70, y=15)  # Расположение изображения
 
